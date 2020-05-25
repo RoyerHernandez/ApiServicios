@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2eb058ece50435293127e0617674dc4" Name="Diagram1">
+        <EntityTypeShape EntityType="ServicesDbModel.Empresa" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Estados" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Puntos" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresa_Puntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Puntos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ServicesDbModel.Citas" Width="1.5" PointX="10.125" PointY="15.375" />
+        <EntityTypeShape EntityType="ServicesDbModel.Clientes" Width="1.5" PointX="3.375" PointY="28.25" />
+        <EntityTypeShape EntityType="ServicesDbModel.Disponibilidad" Width="1.5" PointX="7.875" PointY="1.375" />
+        <EntityTypeShape EntityType="ServicesDbModel.Empleados" Width="1.5" PointX="5.625" PointY="5.625" />
+        <EntityTypeShape EntityType="ServicesDbModel.EstadoCitas" Width="1.5" PointX="3.375" PointY="31.875" />
+        <EntityTypeShape EntityType="ServicesDbModel.Servicios" Width="1.5" PointX="5.625" PointY="11.25" />
+        <EntityTypeShape EntityType="ServicesDbModel.ServiciosEmpresa" Width="1.5" PointX="7.875" PointY="6.5" />
+        <EntityTypeShape EntityType="ServicesDbModel.ServiciosEmpresasPuntos" Width="1.5" PointX="10.125" PointY="3.875" />
+        <EntityTypeShape EntityType="ServicesDbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ServicesDbModel.TipoCalificacion" Width="1.5" PointX="3.375" PointY="24.875" />
+        <EntityTypeShape EntityType="ServicesDbModel.TiposDocumentos" Width="1.5" PointX="3.375" PointY="17.875" />
+        <EntityTypeShape EntityType="ServicesDbModel.TiposServicios" Width="1.5" PointX="3.375" PointY="21.375" />
+        <AssociationConnector Association="ServicesDbModel.FK_Clientes_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Disponibilidad_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresas_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_EstadoCitas_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_Citas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Clientes" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_Disponibilidad" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresas_Disponibilidad" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Disponibilidad" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_Disponibilidad" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Empleados" />
+        <AssociationConnector Association="ServicesDbModel.FK_TiposDocumentos_Empleados" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EstadoCitas" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_Servicios" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_ServiciosEmpresa" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_ServiciosEmpresasPuntos" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TipoCalificacion" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_TiposDocumentos" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TiposServicios" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TipoServicio" />
+        <AssociationConnector Association="ServicesDbModel.fk_Servicios_ServiciosEmpresa" />
+        <AssociationConnector Association="ServicesDbModel.fk_ServiciosEmpresa_ServiciosEmpresasPuntos" />
+        <EntityTypeShape EntityType="ServicesDbModel.EmpleadosEmpresas" Width="1.5" PointX="10.875" PointY="9.625" />
+        <EntityTypeShape EntityType="ServicesDbModel.EmpleadosPuntos" Width="1.5" PointX="10.875" PointY="0.75" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_EmpleadosEmpresas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_EmpleadosPuntos" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresa_EmpleadosEmpresas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EmpleadosEmpresas" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EmpleadosPuntos" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_EmpleadosPuntos" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

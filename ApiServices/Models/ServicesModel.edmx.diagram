@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddf79e7b0d7f46e3bbfb002295b27f8f" Name="Diagram1">
+        <EntityTypeShape EntityType="ServicesDbModel.Citas" Width="1.5" PointX="5.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Clientes" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Disponibilidad" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Empleados" Width="1.5" PointX="5.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.EmpleadosEmpresas" Width="1.5" PointX="7.5" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.EmpleadosPuntos" Width="1.5" PointX="13.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Empresa" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.EstadoCitas" Width="1.5" PointX="3" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Estados" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Puntos" Width="1.5" PointX="8.25" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.Servicios" Width="1.5" PointX="8.25" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.ServiciosEmpresa" Width="1.5" PointX="10.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.ServiciosEmpresasPuntos" Width="1.5" PointX="12.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.TipoCalificacion" Width="1.5" PointX="3" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.TiposDocumentos" Width="1.5" PointX="3" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServicesDbModel.TiposServicios" Width="1.5" PointX="3" PointY="45.75" IsExpanded="true" />
+        <AssociationConnector Association="ServicesDbModel.FK_Clientes_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Disponibilidad_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresas_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_EstadoCitas_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_Citas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_Disponibilidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresas_Disponibilidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Disponibilidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_Disponibilidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_EmpleadosEmpresas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empleados_EmpleadosPuntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_TiposDocumentos_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresa_EmpleadosEmpresas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EmpleadosEmpresas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EmpleadosPuntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Puntos_EmpleadosPuntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Empresa_Puntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_EstadoCitas" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_Puntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_ServiciosEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_ServiciosEmpresasPuntos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TipoCalificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.FK_Estados_TiposDocumentos" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TiposServicios" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Estados_TipoServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_Servicios_ServiciosEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="ServicesDbModel.fk_ServiciosEmpresa_ServiciosEmpresasPuntos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

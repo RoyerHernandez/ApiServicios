@@ -1,0 +1,1886 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ServicesDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="Id_Cita" />
+          </Key>
+          <Property Name="Id_Cita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Id_Punto" Type="int" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Id_EstadoCita" Type="int" />
+          <Property Name="Id_Disponibilidad" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Hora_Inicial" Type="time" Precision="7" />
+          <Property Name="Hora_fina" Type="time" Precision="7" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres_Cliente" Type="varchar" MaxLength="100" />
+          <Property Name="Apellidos_Cliente" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Disponibilidad">
+          <Key>
+            <PropertyRef Name="Id_Disponibilidad" />
+          </Key>
+          <Property Name="Id_Disponibilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Id_Punto" Type="int" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Fecha_Disponibilidad" Type="datetime" />
+          <Property Name="Hora_Inicial" Type="time" Precision="7" />
+          <Property Name="Hora_Fin" Type="time" Precision="7" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id_empleado" />
+          </Key>
+          <Property Name="Id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_TipoDocumento" Type="int" />
+          <Property Name="NoDocumento" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="100" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Fotos" Type="varchar" MaxLength="200" />
+          <Property Name="RedesSociales" Type="varchar" MaxLength="200" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpleadosEmpresas">
+          <Key>
+            <PropertyRef Name="Id_EmpleadosEmpresas" />
+          </Key>
+          <Property Name="Id_EmpleadosEmpresas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmpleadosPuntos">
+          <Key>
+            <PropertyRef Name="Id_Punto" />
+          </Key>
+          <Property Name="Id_Punto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="varchar" MaxLength="100" />
+          <Property Name="Nit" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Id_redesSociales" Type="varchar" MaxLength="100" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EstadoCitas">
+          <Key>
+            <PropertyRef Name="Id_EstadoCita" />
+          </Key>
+          <Property Name="Id_EstadoCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstadoCita" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_estado" Type="varchar" MaxLength="50" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Puntos">
+          <Key>
+            <PropertyRef Name="Id_Punto" />
+          </Key>
+          <Property Name="Id_Punto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Nombre_Punto" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion_Punto" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Servicio" Type="varchar" MaxLength="100" />
+          <Property Name="Id_TipoServicio" Type="int" />
+          <Property Name="Id_estado" Type="int" />
+          <Property Name="Fecha_Ingreso" Type="datetime" />
+          <Property Name="Usuario_Ingreso" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+          <Property Name="Usuario_Modifica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ServiciosEmpresa">
+          <Key>
+            <PropertyRef Name="Id_ServicioEmpresa" />
+          </Key>
+          <Property Name="Id_ServicioEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Servicio" Type="int" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Fecha_Ingreso" Type="datetime" />
+          <Property Name="Usuario_Ingreso" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+          <Property Name="Usuario_Modifica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ServiciosEmpresasPuntos">
+          <Key>
+            <PropertyRef Name="Id_ServicioEmpresaPunto" />
+          </Key>
+          <Property Name="Id_ServicioEmpresaPunto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_ServicioEmpresa" Type="int" />
+          <Property Name="Detalles" Type="varchar" MaxLength="100" />
+          <Property Name="Precio" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Fecha_Ingreso" Type="datetime" />
+          <Property Name="Usuario_Ingreso" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+          <Property Name="Usuario_Modifica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoCalificacion">
+          <Key>
+            <PropertyRef Name="Id_TipoCalificacion" />
+          </Key>
+          <Property Name="Id_TipoCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Calificacion" Type="varchar" MaxLength="100" />
+          <Property Name="Id_estado" Type="int" />
+          <Property Name="Fecha_Ingreso" Type="datetime" />
+          <Property Name="Usuario_Ingreso" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+          <Property Name="Usuario_Modifica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TiposDocumentos">
+          <Key>
+            <PropertyRef Name="Id_TipoDocumento" />
+          </Key>
+          <Property Name="Id_TipoDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_TipoDocumento" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Estado" Type="int" />
+          <Property Name="Login_Creacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_creacion" Type="datetime" />
+          <Property Name="Login_Modificacion" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TiposServicios">
+          <Key>
+            <PropertyRef Name="Id_TipoServicio" />
+          </Key>
+          <Property Name="Id_TipoServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_TipoServicio" Type="varchar" MaxLength="100" />
+          <Property Name="Id_estado" Type="int" />
+          <Property Name="Fecha_Ingreso" Type="datetime" />
+          <Property Name="Usuario_Ingreso" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_Modificacion" Type="datetime" />
+          <Property Name="Usuario_Modifica" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Clientes_Citas">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disponibilidad_Citas">
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disponibilidad">
+              <PropertyRef Name="Id_Disponibilidad" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Disponibilidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Citas">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Disponibilidad">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_EmpleadosEmpresas">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="EmpleadosEmpresas" Type="Self.EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_EmpleadosPuntos">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+          <End Role="EmpleadosPuntos" Type="Self.EmpleadosPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_EmpleadosEmpresas">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="EmpleadosEmpresas" Type="Self.EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_Puntos">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Puntos">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Citas">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Disponibilidad">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoCitas_Citas">
+          <End Role="EstadoCitas" Type="Self.EstadoCitas" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCitas">
+              <PropertyRef Name="Id_EstadoCita" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_EstadoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Clientes">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Disponibilidad">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Empleados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EmpleadosEmpresas">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="EmpleadosEmpresas" Type="Self.EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EmpleadosPuntos">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="EmpleadosPuntos" Type="Self.EmpleadosPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Empresa">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EstadoCitas">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="EstadoCitas" Type="Self.EstadoCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EstadoCitas">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Puntos">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Puntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_Servicios">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_ServiciosEmpresa">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="ServiciosEmpresa" Type="Self.ServiciosEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_ServiciosEmpresasPuntos">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="ServiciosEmpresasPuntos" Type="Self.ServiciosEmpresasPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresasPuntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TipoCalificacion">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="TipoCalificacion" Type="Self.TipoCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TipoCalificacion">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_TiposDocumentos">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="TiposDocumentos" Type="Self.TiposDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TiposDocumentos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TipoServicio">
+          <End Role="TiposServicios" Type="Self.TiposServicios" Multiplicity="0..1" />
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposServicios">
+              <PropertyRef Name="Id_TipoServicio" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="Id_TipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TiposServicios">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="TiposServicios" Type="Self.TiposServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TiposServicios">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_Citas">
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_Disponibilidad">
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="0..1" />
+          <End Role="Disponibilidad" Type="Self.Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_EmpleadosPuntos">
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="1" />
+          <End Role="EmpleadosPuntos" Type="Self.EmpleadosPuntos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Servicios_ServiciosEmpresa">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+          <End Role="ServiciosEmpresa" Type="Self.ServiciosEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id_Servicio" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServiciosEmpresa_ServiciosEmpresasPuntos">
+          <End Role="ServiciosEmpresa" Type="Self.ServiciosEmpresa" Multiplicity="0..1" />
+          <End Role="ServiciosEmpresasPuntos" Type="Self.ServiciosEmpresasPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_ServicioEmpresa" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresasPuntos">
+              <PropertyRef Name="Id_ServicioEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposDocumentos_Empleados">
+          <End Role="TiposDocumentos" Type="Self.TiposDocumentos" Multiplicity="0..1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumentos">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServicesDbModelStoreContainer">
+          <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disponibilidad" EntityType="Self.Disponibilidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadosEmpresas" EntityType="Self.EmpleadosEmpresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadosPuntos" EntityType="Self.EmpleadosPuntos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoCitas" EntityType="Self.EstadoCitas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puntos" EntityType="Self.Puntos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiciosEmpresa" EntityType="Self.ServiciosEmpresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiciosEmpresasPuntos" EntityType="Self.ServiciosEmpresasPuntos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCalificacion" EntityType="Self.TipoCalificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposDocumentos" EntityType="Self.TiposDocumentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposServicios" EntityType="Self.TiposServicios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Clientes_Citas" Association="Self.FK_Clientes_Citas">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disponibilidad_Citas" Association="Self.FK_Disponibilidad_Citas">
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Citas" Association="Self.FK_Empleados_Citas">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Disponibilidad" Association="Self.FK_Empleados_Disponibilidad">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_EmpleadosEmpresas" Association="Self.FK_Empleados_EmpleadosEmpresas">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_EmpleadosPuntos" Association="Self.FK_Empleados_EmpleadosPuntos">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_EmpleadosEmpresas" Association="Self.FK_Empresa_EmpleadosEmpresas">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_Puntos" Association="Self.FK_Empresa_Puntos">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Puntos" EntitySet="Puntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Citas" Association="Self.FK_Empresas_Citas">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Disponibilidad" Association="Self.FK_Empresas_Disponibilidad">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoCitas_Citas" Association="Self.FK_EstadoCitas_Citas">
+            <End Role="EstadoCitas" EntitySet="EstadoCitas" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Clientes" Association="Self.FK_Estados_Clientes">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Disponibilidad" Association="Self.FK_Estados_Disponibilidad">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Empleados" Association="Self.FK_Estados_Empleados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EmpleadosEmpresas" Association="Self.FK_Estados_EmpleadosEmpresas">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EmpleadosPuntos" Association="Self.FK_Estados_EmpleadosPuntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Empresa" Association="Self.FK_Estados_Empresa">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EstadoCitas" Association="Self.FK_Estados_EstadoCitas">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EstadoCitas" EntitySet="EstadoCitas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Puntos" Association="Self.FK_Estados_Puntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Puntos" EntitySet="Puntos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_Servicios" Association="Self.fk_Estados_Servicios">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_ServiciosEmpresa" Association="Self.fk_Estados_ServiciosEmpresa">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_ServiciosEmpresasPuntos" Association="Self.fk_Estados_ServiciosEmpresasPuntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ServiciosEmpresasPuntos" EntitySet="ServiciosEmpresasPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TipoCalificacion" Association="Self.fk_Estados_TipoCalificacion">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TipoCalificacion" EntitySet="TipoCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_TiposDocumentos" Association="Self.FK_Estados_TiposDocumentos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TipoServicio" Association="Self.fk_Estados_TipoServicio">
+            <End Role="TiposServicios" EntitySet="TiposServicios" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TiposServicios" Association="Self.fk_Estados_TiposServicios">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TiposServicios" EntitySet="TiposServicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_Citas" Association="Self.FK_Puntos_Citas">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_Disponibilidad" Association="Self.FK_Puntos_Disponibilidad">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_EmpleadosPuntos" Association="Self.FK_Puntos_EmpleadosPuntos">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Servicios_ServiciosEmpresa" Association="Self.fk_Servicios_ServiciosEmpresa">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServiciosEmpresa_ServiciosEmpresasPuntos" Association="Self.fk_ServiciosEmpresa_ServiciosEmpresasPuntos">
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+            <End Role="ServiciosEmpresasPuntos" EntitySet="ServiciosEmpresasPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposDocumentos_Empleados" Association="Self.FK_TiposDocumentos_Empleados">
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServicesDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id_Empresa" />
+          </Key>
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nit" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Id_redesSociales" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Puntos" Relationship="Self.FK_Empresa_Puntos" FromRole="Empresa" ToRole="Puntos" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Empresa" FromRole="Empresa" ToRole="Estados" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_Empresas_Citas" FromRole="Empresa" ToRole="Citas" />
+          <NavigationProperty Name="Disponibilidad" Relationship="ServicesDbModel.FK_Empresas_Disponibilidad" FromRole="Empresa" ToRole="Disponibilidad" />
+          <NavigationProperty Name="EmpleadosEmpresas" Relationship="ServicesDbModel.FK_Empresa_EmpleadosEmpresas" FromRole="Empresa" ToRole="EmpleadosEmpresas" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id_Estado" />
+          </Key>
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Estados_Empresa" FromRole="Estados" ToRole="Empresa" />
+          <NavigationProperty Name="Puntos" Relationship="Self.FK_Estados_Puntos" FromRole="Estados" ToRole="Puntos" />
+          <NavigationProperty Name="Clientes" Relationship="ServicesDbModel.FK_Estados_Clientes" FromRole="Estados" ToRole="Clientes" />
+          <NavigationProperty Name="Disponibilidad" Relationship="ServicesDbModel.FK_Estados_Disponibilidad" FromRole="Estados" ToRole="Disponibilidad" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_Estados_Empleados" FromRole="Estados" ToRole="Empleados" />
+          <NavigationProperty Name="EstadoCitas" Relationship="ServicesDbModel.FK_Estados_EstadoCitas" FromRole="Estados" ToRole="EstadoCitas" />
+          <NavigationProperty Name="Servicios" Relationship="ServicesDbModel.fk_Estados_Servicios" FromRole="Estados" ToRole="Servicios" />
+          <NavigationProperty Name="ServiciosEmpresa" Relationship="ServicesDbModel.fk_Estados_ServiciosEmpresa" FromRole="Estados" ToRole="ServiciosEmpresa" />
+          <NavigationProperty Name="ServiciosEmpresasPuntos" Relationship="ServicesDbModel.fk_Estados_ServiciosEmpresasPuntos" FromRole="Estados" ToRole="ServiciosEmpresasPuntos" />
+          <NavigationProperty Name="TipoCalificacion" Relationship="ServicesDbModel.fk_Estados_TipoCalificacion" FromRole="Estados" ToRole="TipoCalificacion" />
+          <NavigationProperty Name="TiposDocumentos" Relationship="ServicesDbModel.FK_Estados_TiposDocumentos" FromRole="Estados" ToRole="TiposDocumentos" />
+          <NavigationProperty Name="TiposServicios" Relationship="ServicesDbModel.fk_Estados_TiposServicios" FromRole="Estados" ToRole="TiposServicios" />
+          <NavigationProperty Name="EmpleadosEmpresas" Relationship="ServicesDbModel.FK_Estados_EmpleadosEmpresas" FromRole="Estados" ToRole="EmpleadosEmpresas" />
+          <NavigationProperty Name="EmpleadosPuntos" Relationship="ServicesDbModel.FK_Estados_EmpleadosPuntos" FromRole="Estados" ToRole="EmpleadosPuntos" />
+        </EntityType>
+        <EntityType Name="Puntos">
+          <Key>
+            <PropertyRef Name="Id_Punto" />
+          </Key>
+          <Property Name="Id_Punto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Nombre_Punto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion_Punto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Empresa_Puntos" FromRole="Puntos" ToRole="Empresa" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Puntos" FromRole="Puntos" ToRole="Estados" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_Puntos_Citas" FromRole="Puntos" ToRole="Citas" />
+          <NavigationProperty Name="Disponibilidad" Relationship="ServicesDbModel.FK_Puntos_Disponibilidad" FromRole="Puntos" ToRole="Disponibilidad" />
+          <NavigationProperty Name="EmpleadosPuntos" Relationship="ServicesDbModel.FK_Puntos_EmpleadosPuntos" FromRole="Puntos" ToRole="EmpleadosPuntos" />
+        </EntityType>
+        <Association Name="FK_Empresa_Puntos">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Puntos">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Empresa">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Puntos">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Puntos" Type="Self.Puntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Puntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServicesDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="Puntos" EntityType="Self.Puntos" />
+          <AssociationSet Name="FK_Empresa_Puntos" Association="Self.FK_Empresa_Puntos">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Puntos" EntitySet="Puntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Empresa" Association="Self.FK_Estados_Empresa">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Puntos" Association="Self.FK_Estados_Puntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Puntos" EntitySet="Puntos" />
+          </AssociationSet>
+          <EntitySet Name="Citas" EntityType="ServicesDbModel.Citas" />
+          <EntitySet Name="Clientes" EntityType="ServicesDbModel.Clientes" />
+          <EntitySet Name="Disponibilidad" EntityType="ServicesDbModel.Disponibilidad" />
+          <EntitySet Name="Empleados" EntityType="ServicesDbModel.Empleados" />
+          <EntitySet Name="EstadoCitas" EntityType="ServicesDbModel.EstadoCitas" />
+          <EntitySet Name="Servicios" EntityType="ServicesDbModel.Servicios" />
+          <EntitySet Name="ServiciosEmpresa" EntityType="ServicesDbModel.ServiciosEmpresa" />
+          <EntitySet Name="ServiciosEmpresasPuntos" EntityType="ServicesDbModel.ServiciosEmpresasPuntos" />
+          <EntitySet Name="sysdiagrams" EntityType="ServicesDbModel.sysdiagrams" />
+          <EntitySet Name="TipoCalificacion" EntityType="ServicesDbModel.TipoCalificacion" />
+          <EntitySet Name="TiposDocumentos" EntityType="ServicesDbModel.TiposDocumentos" />
+          <EntitySet Name="TiposServicios" EntityType="ServicesDbModel.TiposServicios" />
+          <AssociationSet Name="FK_Clientes_Citas" Association="ServicesDbModel.FK_Clientes_Citas">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Disponibilidad_Citas" Association="ServicesDbModel.FK_Disponibilidad_Citas">
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Citas" Association="ServicesDbModel.FK_Empleados_Citas">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Citas" Association="ServicesDbModel.FK_Empresas_Citas">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoCitas_Citas" Association="ServicesDbModel.FK_EstadoCitas_Citas">
+            <End Role="EstadoCitas" EntitySet="EstadoCitas" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_Citas" Association="ServicesDbModel.FK_Puntos_Citas">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Clientes" Association="ServicesDbModel.FK_Estados_Clientes">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_Disponibilidad" Association="ServicesDbModel.FK_Empleados_Disponibilidad">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Disponibilidad" Association="ServicesDbModel.FK_Empresas_Disponibilidad">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Disponibilidad" Association="ServicesDbModel.FK_Estados_Disponibilidad">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_Disponibilidad" Association="ServicesDbModel.FK_Puntos_Disponibilidad">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="Disponibilidad" EntitySet="Disponibilidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_Empleados" Association="ServicesDbModel.FK_Estados_Empleados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TiposDocumentos_Empleados" Association="ServicesDbModel.FK_TiposDocumentos_Empleados">
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EstadoCitas" Association="ServicesDbModel.FK_Estados_EstadoCitas">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EstadoCitas" EntitySet="EstadoCitas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_Servicios" Association="ServicesDbModel.fk_Estados_Servicios">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_ServiciosEmpresa" Association="ServicesDbModel.fk_Estados_ServiciosEmpresa">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_ServiciosEmpresasPuntos" Association="ServicesDbModel.fk_Estados_ServiciosEmpresasPuntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="ServiciosEmpresasPuntos" EntitySet="ServiciosEmpresasPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TipoCalificacion" Association="ServicesDbModel.fk_Estados_TipoCalificacion">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TipoCalificacion" EntitySet="TipoCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_TiposDocumentos" Association="ServicesDbModel.FK_Estados_TiposDocumentos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TiposServicios" Association="ServicesDbModel.fk_Estados_TiposServicios">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="TiposServicios" EntitySet="TiposServicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estados_TipoServicio" Association="ServicesDbModel.fk_Estados_TipoServicio">
+            <End Role="TiposServicios" EntitySet="TiposServicios" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Servicios_ServiciosEmpresa" Association="ServicesDbModel.fk_Servicios_ServiciosEmpresa">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ServiciosEmpresa_ServiciosEmpresasPuntos" Association="ServicesDbModel.fk_ServiciosEmpresa_ServiciosEmpresasPuntos">
+            <End Role="ServiciosEmpresa" EntitySet="ServiciosEmpresa" />
+            <End Role="ServiciosEmpresasPuntos" EntitySet="ServiciosEmpresasPuntos" />
+          </AssociationSet>
+          <EntitySet Name="EmpleadosEmpresas" EntityType="ServicesDbModel.EmpleadosEmpresas" />
+          <EntitySet Name="EmpleadosPuntos" EntityType="ServicesDbModel.EmpleadosPuntos" />
+          <AssociationSet Name="FK_Empleados_EmpleadosEmpresas" Association="ServicesDbModel.FK_Empleados_EmpleadosEmpresas">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_EmpleadosPuntos" Association="ServicesDbModel.FK_Empleados_EmpleadosPuntos">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresa_EmpleadosEmpresas" Association="ServicesDbModel.FK_Empresa_EmpleadosEmpresas">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EmpleadosEmpresas" Association="ServicesDbModel.FK_Estados_EmpleadosEmpresas">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EmpleadosEmpresas" EntitySet="EmpleadosEmpresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estados_EmpleadosPuntos" Association="ServicesDbModel.FK_Estados_EmpleadosPuntos">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puntos_EmpleadosPuntos" Association="ServicesDbModel.FK_Puntos_EmpleadosPuntos">
+            <End Role="Puntos" EntitySet="Puntos" />
+            <End Role="EmpleadosPuntos" EntitySet="EmpleadosPuntos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="Id_Cita" />
+          </Key>
+          <Property Name="Id_Cita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Id_Punto" Type="Int32" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Id_EstadoCita" Type="Int32" />
+          <Property Name="Id_Disponibilidad" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Hora_Inicial" Type="Time" Precision="7" />
+          <Property Name="Hora_fina" Type="Time" Precision="7" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Clientes" Relationship="ServicesDbModel.FK_Clientes_Citas" FromRole="Citas" ToRole="Clientes" />
+          <NavigationProperty Name="Disponibilidad" Relationship="ServicesDbModel.FK_Disponibilidad_Citas" FromRole="Citas" ToRole="Disponibilidad" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_Empleados_Citas" FromRole="Citas" ToRole="Empleados" />
+          <NavigationProperty Name="Empresa" Relationship="ServicesDbModel.FK_Empresas_Citas" FromRole="Citas" ToRole="Empresa" />
+          <NavigationProperty Name="EstadoCitas" Relationship="ServicesDbModel.FK_EstadoCitas_Citas" FromRole="Citas" ToRole="EstadoCitas" />
+          <NavigationProperty Name="Puntos" Relationship="ServicesDbModel.FK_Puntos_Citas" FromRole="Citas" ToRole="Puntos" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres_Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos_Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_Clientes_Citas" FromRole="Clientes" ToRole="Citas" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_Clientes" FromRole="Clientes" ToRole="Estados" />
+        </EntityType>
+        <EntityType Name="Disponibilidad">
+          <Key>
+            <PropertyRef Name="Id_Disponibilidad" />
+          </Key>
+          <Property Name="Id_Disponibilidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Id_Punto" Type="Int32" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Fecha_Disponibilidad" Type="DateTime" Precision="3" />
+          <Property Name="Hora_Inicial" Type="Time" Precision="7" />
+          <Property Name="Hora_Fin" Type="Time" Precision="7" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_Disponibilidad_Citas" FromRole="Disponibilidad" ToRole="Citas" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_Empleados_Disponibilidad" FromRole="Disponibilidad" ToRole="Empleados" />
+          <NavigationProperty Name="Empresa" Relationship="ServicesDbModel.FK_Empresas_Disponibilidad" FromRole="Disponibilidad" ToRole="Empresa" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_Disponibilidad" FromRole="Disponibilidad" ToRole="Estados" />
+          <NavigationProperty Name="Puntos" Relationship="ServicesDbModel.FK_Puntos_Disponibilidad" FromRole="Disponibilidad" ToRole="Puntos" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="Id_empleado" />
+          </Key>
+          <Property Name="Id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_TipoDocumento" Type="Int32" />
+          <Property Name="NoDocumento" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Fotos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RedesSociales" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_Empleados_Citas" FromRole="Empleados" ToRole="Citas" />
+          <NavigationProperty Name="Disponibilidad" Relationship="ServicesDbModel.FK_Empleados_Disponibilidad" FromRole="Empleados" ToRole="Disponibilidad" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_Empleados" FromRole="Empleados" ToRole="Estados" />
+          <NavigationProperty Name="TiposDocumentos" Relationship="ServicesDbModel.FK_TiposDocumentos_Empleados" FromRole="Empleados" ToRole="TiposDocumentos" />
+          <NavigationProperty Name="EmpleadosEmpresas" Relationship="ServicesDbModel.FK_Empleados_EmpleadosEmpresas" FromRole="Empleados" ToRole="EmpleadosEmpresas" />
+          <NavigationProperty Name="EmpleadosPuntos" Relationship="ServicesDbModel.FK_Empleados_EmpleadosPuntos" FromRole="Empleados" ToRole="EmpleadosPuntos" />
+        </EntityType>
+        <EntityType Name="EstadoCitas">
+          <Key>
+            <PropertyRef Name="Id_EstadoCita" />
+          </Key>
+          <Property Name="Id_EstadoCita" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstadoCita" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Citas" Relationship="ServicesDbModel.FK_EstadoCitas_Citas" FromRole="EstadoCitas" ToRole="Citas" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_EstadoCitas" FromRole="EstadoCitas" ToRole="Estados" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="Id_Servicio" />
+          </Key>
+          <Property Name="Id_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Servicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_TipoServicio" Type="Int32" />
+          <Property Name="Id_estado" Type="Int32" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Ingreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Modifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.fk_Estados_Servicios" FromRole="Servicios" ToRole="Estados" />
+          <NavigationProperty Name="TiposServicios" Relationship="ServicesDbModel.fk_Estados_TipoServicio" FromRole="Servicios" ToRole="TiposServicios" />
+          <NavigationProperty Name="ServiciosEmpresa" Relationship="ServicesDbModel.fk_Servicios_ServiciosEmpresa" FromRole="Servicios" ToRole="ServiciosEmpresa" />
+        </EntityType>
+        <EntityType Name="ServiciosEmpresa">
+          <Key>
+            <PropertyRef Name="Id_ServicioEmpresa" />
+          </Key>
+          <Property Name="Id_ServicioEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Servicio" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Ingreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Modifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.fk_Estados_ServiciosEmpresa" FromRole="ServiciosEmpresa" ToRole="Estados" />
+          <NavigationProperty Name="Servicios" Relationship="ServicesDbModel.fk_Servicios_ServiciosEmpresa" FromRole="ServiciosEmpresa" ToRole="Servicios" />
+          <NavigationProperty Name="ServiciosEmpresasPuntos" Relationship="ServicesDbModel.fk_ServiciosEmpresa_ServiciosEmpresasPuntos" FromRole="ServiciosEmpresa" ToRole="ServiciosEmpresasPuntos" />
+        </EntityType>
+        <EntityType Name="ServiciosEmpresasPuntos">
+          <Key>
+            <PropertyRef Name="Id_ServicioEmpresaPunto" />
+          </Key>
+          <Property Name="Id_ServicioEmpresaPunto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_ServicioEmpresa" Type="Int32" />
+          <Property Name="Detalles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Ingreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Modifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.fk_Estados_ServiciosEmpresasPuntos" FromRole="ServiciosEmpresasPuntos" ToRole="Estados" />
+          <NavigationProperty Name="ServiciosEmpresa" Relationship="ServicesDbModel.fk_ServiciosEmpresa_ServiciosEmpresasPuntos" FromRole="ServiciosEmpresasPuntos" ToRole="ServiciosEmpresa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoCalificacion">
+          <Key>
+            <PropertyRef Name="Id_TipoCalificacion" />
+          </Key>
+          <Property Name="Id_TipoCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Calificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_estado" Type="Int32" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Ingreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Modifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.fk_Estados_TipoCalificacion" FromRole="TipoCalificacion" ToRole="Estados" />
+        </EntityType>
+        <EntityType Name="TiposDocumentos">
+          <Key>
+            <PropertyRef Name="Id_TipoDocumento" />
+          </Key>
+          <Property Name="Id_TipoDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_TipoDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_TiposDocumentos_Empleados" FromRole="TiposDocumentos" ToRole="Empleados" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_TiposDocumentos" FromRole="TiposDocumentos" ToRole="Estados" />
+        </EntityType>
+        <EntityType Name="TiposServicios">
+          <Key>
+            <PropertyRef Name="Id_TipoServicio" />
+          </Key>
+          <Property Name="Id_TipoServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_TipoServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_estado" Type="Int32" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Ingreso" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <Property Name="Usuario_Modifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.fk_Estados_TiposServicios" FromRole="TiposServicios" ToRole="Estados" />
+          <NavigationProperty Name="Servicios" Relationship="ServicesDbModel.fk_Estados_TipoServicio" FromRole="TiposServicios" ToRole="Servicios" />
+        </EntityType>
+        <Association Name="FK_Clientes_Citas">
+          <End Type="ServicesDbModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Disponibilidad_Citas">
+          <End Type="ServicesDbModel.Disponibilidad" Role="Disponibilidad" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disponibilidad">
+              <PropertyRef Name="Id_Disponibilidad" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Disponibilidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Citas">
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Citas">
+          <End Type="ServicesDbModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoCitas_Citas">
+          <End Type="ServicesDbModel.EstadoCitas" Role="EstadoCitas" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoCitas">
+              <PropertyRef Name="Id_EstadoCita" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_EstadoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_Citas">
+          <End Type="ServicesDbModel.Puntos" Role="Puntos" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Citas" Role="Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Clientes">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_Disponibilidad">
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Disponibilidad" Role="Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Disponibilidad">
+          <End Type="ServicesDbModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Disponibilidad" Role="Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Disponibilidad">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Disponibilidad" Role="Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_Disponibilidad">
+          <End Type="ServicesDbModel.Puntos" Role="Puntos" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Disponibilidad" Role="Disponibilidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="Disponibilidad">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_Empleados">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TiposDocumentos_Empleados">
+          <End Type="ServicesDbModel.TiposDocumentos" Role="TiposDocumentos" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumentos">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_TipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EstadoCitas">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EstadoCitas" Role="EstadoCitas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EstadoCitas">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_Servicios">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Servicios" Role="Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_ServiciosEmpresa">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.ServiciosEmpresa" Role="ServiciosEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_ServiciosEmpresasPuntos">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.ServiciosEmpresasPuntos" Role="ServiciosEmpresasPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresasPuntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TipoCalificacion">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.TipoCalificacion" Role="TipoCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TipoCalificacion">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_TiposDocumentos">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.TiposDocumentos" Role="TiposDocumentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TiposDocumentos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TiposServicios">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.TiposServicios" Role="TiposServicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="TiposServicios">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estados_TipoServicio">
+          <End Type="ServicesDbModel.TiposServicios" Role="TiposServicios" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.Servicios" Role="Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposServicios">
+              <PropertyRef Name="Id_TipoServicio" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="Id_TipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Servicios_ServiciosEmpresa">
+          <End Type="ServicesDbModel.Servicios" Role="Servicios" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.ServiciosEmpresa" Role="ServiciosEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id_Servicio" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ServiciosEmpresa_ServiciosEmpresasPuntos">
+          <End Type="ServicesDbModel.ServiciosEmpresa" Role="ServiciosEmpresa" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.ServiciosEmpresasPuntos" Role="ServiciosEmpresasPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiciosEmpresa">
+              <PropertyRef Name="Id_ServicioEmpresa" />
+            </Principal>
+            <Dependent Role="ServiciosEmpresasPuntos">
+              <PropertyRef Name="Id_ServicioEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmpleadosEmpresas">
+          <Key>
+            <PropertyRef Name="Id_EmpleadosEmpresas" />
+          </Key>
+          <Property Name="Id_EmpleadosEmpresas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_Empleados_EmpleadosEmpresas" FromRole="EmpleadosEmpresas" ToRole="Empleados" />
+          <NavigationProperty Name="Empresa" Relationship="ServicesDbModel.FK_Empresa_EmpleadosEmpresas" FromRole="EmpleadosEmpresas" ToRole="Empresa" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_EmpleadosEmpresas" FromRole="EmpleadosEmpresas" ToRole="Estados" />
+        </EntityType>
+        <EntityType Name="EmpleadosPuntos">
+          <Key>
+            <PropertyRef Name="Id_Punto" />
+          </Key>
+          <Property Name="Id_Punto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Id_Estado" Type="Int32" />
+          <Property Name="Login_Creacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="Login_Modificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Modificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Empleados" Relationship="ServicesDbModel.FK_Empleados_EmpleadosPuntos" FromRole="EmpleadosPuntos" ToRole="Empleados" />
+          <NavigationProperty Name="Estados" Relationship="ServicesDbModel.FK_Estados_EmpleadosPuntos" FromRole="EmpleadosPuntos" ToRole="Estados" />
+          <NavigationProperty Name="Puntos" Relationship="ServicesDbModel.FK_Puntos_EmpleadosPuntos" FromRole="EmpleadosPuntos" ToRole="Puntos" />
+        </EntityType>
+        <Association Name="FK_Empleados_EmpleadosEmpresas">
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EmpleadosEmpresas" Role="EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_EmpleadosPuntos">
+          <End Type="ServicesDbModel.Empleados" Role="Empleados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EmpleadosPuntos" Role="EmpleadosPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="Id_empleado" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresa_EmpleadosEmpresas">
+          <End Type="ServicesDbModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EmpleadosEmpresas" Role="EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id_Empresa" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EmpleadosEmpresas">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EmpleadosEmpresas" Role="EmpleadosEmpresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EmpleadosEmpresas">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estados_EmpleadosPuntos">
+          <End Type="ServicesDbModel.Estados" Role="Estados" Multiplicity="0..1" />
+          <End Type="ServicesDbModel.EmpleadosPuntos" Role="EmpleadosPuntos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id_Estado" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puntos_EmpleadosPuntos">
+          <End Type="ServicesDbModel.Puntos" Role="Puntos" Multiplicity="1" />
+          <End Type="ServicesDbModel.EmpleadosPuntos" Role="EmpleadosPuntos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Puntos">
+              <PropertyRef Name="Id_Punto" />
+            </Principal>
+            <Dependent Role="EmpleadosPuntos">
+              <PropertyRef Name="Id_Punto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ServicesDbModelStoreContainer" CdmEntityContainer="ServicesDbEntities">
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="ServicesDbModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_redesSociales" ColumnName="Id_redesSociales" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="ServicesDbModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Nombre_estado" ColumnName="Nombre_estado" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puntos">
+            <EntityTypeMapping TypeName="ServicesDbModel.Puntos">
+              <MappingFragment StoreEntitySet="Puntos">
+                <ScalarProperty Name="Id_Punto" ColumnName="Id_Punto" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Nombre_Punto" ColumnName="Nombre_Punto" />
+                <ScalarProperty Name="Direccion_Punto" ColumnName="Direccion_Punto" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citas">
+            <EntityTypeMapping TypeName="ServicesDbModel.Citas">
+              <MappingFragment StoreEntitySet="Citas">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Hora_fina" ColumnName="Hora_fina" />
+                <ScalarProperty Name="Hora_Inicial" ColumnName="Hora_Inicial" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Disponibilidad" ColumnName="Id_Disponibilidad" />
+                <ScalarProperty Name="Id_EstadoCita" ColumnName="Id_EstadoCita" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Punto" ColumnName="Id_Punto" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_Cita" ColumnName="Id_Cita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="ServicesDbModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Apellidos_Cliente" ColumnName="Apellidos_Cliente" />
+                <ScalarProperty Name="Nombres_Cliente" ColumnName="Nombres_Cliente" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disponibilidad">
+            <EntityTypeMapping TypeName="ServicesDbModel.Disponibilidad">
+              <MappingFragment StoreEntitySet="Disponibilidad">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Hora_Fin" ColumnName="Hora_Fin" />
+                <ScalarProperty Name="Hora_Inicial" ColumnName="Hora_Inicial" />
+                <ScalarProperty Name="Fecha_Disponibilidad" ColumnName="Fecha_Disponibilidad" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Punto" ColumnName="Id_Punto" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_Disponibilidad" ColumnName="Id_Disponibilidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="ServicesDbModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="RedesSociales" ColumnName="RedesSociales" />
+                <ScalarProperty Name="Fotos" ColumnName="Fotos" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="NoDocumento" ColumnName="NoDocumento" />
+                <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+                <ScalarProperty Name="Id_empleado" ColumnName="Id_empleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoCitas">
+            <EntityTypeMapping TypeName="ServicesDbModel.EstadoCitas">
+              <MappingFragment StoreEntitySet="EstadoCitas">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="NombreEstadoCita" ColumnName="NombreEstadoCita" />
+                <ScalarProperty Name="Id_EstadoCita" ColumnName="Id_EstadoCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="ServicesDbModel.Servicios">
+              <MappingFragment StoreEntitySet="Servicios">
+                <ScalarProperty Name="Usuario_Modifica" ColumnName="Usuario_Modifica" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Usuario_Ingreso" ColumnName="Usuario_Ingreso" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+                <ScalarProperty Name="Id_TipoServicio" ColumnName="Id_TipoServicio" />
+                <ScalarProperty Name="Nombre_Servicio" ColumnName="Nombre_Servicio" />
+                <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiciosEmpresa">
+            <EntityTypeMapping TypeName="ServicesDbModel.ServiciosEmpresa">
+              <MappingFragment StoreEntitySet="ServiciosEmpresa">
+                <ScalarProperty Name="Usuario_Modifica" ColumnName="Usuario_Modifica" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Usuario_Ingreso" ColumnName="Usuario_Ingreso" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Servicio" ColumnName="Id_Servicio" />
+                <ScalarProperty Name="Id_ServicioEmpresa" ColumnName="Id_ServicioEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiciosEmpresasPuntos">
+            <EntityTypeMapping TypeName="ServicesDbModel.ServiciosEmpresasPuntos">
+              <MappingFragment StoreEntitySet="ServiciosEmpresasPuntos">
+                <ScalarProperty Name="Usuario_Modifica" ColumnName="Usuario_Modifica" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Usuario_Ingreso" ColumnName="Usuario_Ingreso" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+                <ScalarProperty Name="Id_ServicioEmpresa" ColumnName="Id_ServicioEmpresa" />
+                <ScalarProperty Name="Id_ServicioEmpresaPunto" ColumnName="Id_ServicioEmpresaPunto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ServicesDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCalificacion">
+            <EntityTypeMapping TypeName="ServicesDbModel.TipoCalificacion">
+              <MappingFragment StoreEntitySet="TipoCalificacion">
+                <ScalarProperty Name="Usuario_Modifica" ColumnName="Usuario_Modifica" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Usuario_Ingreso" ColumnName="Usuario_Ingreso" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+                <ScalarProperty Name="Nombre_Calificacion" ColumnName="Nombre_Calificacion" />
+                <ScalarProperty Name="Id_TipoCalificacion" ColumnName="Id_TipoCalificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposDocumentos">
+            <EntityTypeMapping TypeName="ServicesDbModel.TiposDocumentos">
+              <MappingFragment StoreEntitySet="TiposDocumentos">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Nombre_TipoDocumento" ColumnName="Nombre_TipoDocumento" />
+                <ScalarProperty Name="Id_TipoDocumento" ColumnName="Id_TipoDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposServicios">
+            <EntityTypeMapping TypeName="ServicesDbModel.TiposServicios">
+              <MappingFragment StoreEntitySet="TiposServicios">
+                <ScalarProperty Name="Usuario_Modifica" ColumnName="Usuario_Modifica" />
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Usuario_Ingreso" ColumnName="Usuario_Ingreso" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+                <ScalarProperty Name="Nombre_TipoServicio" ColumnName="Nombre_TipoServicio" />
+                <ScalarProperty Name="Id_TipoServicio" ColumnName="Id_TipoServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadosEmpresas">
+            <EntityTypeMapping TypeName="ServicesDbModel.EmpleadosEmpresas">
+              <MappingFragment StoreEntitySet="EmpleadosEmpresas">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_EmpleadosEmpresas" ColumnName="Id_EmpleadosEmpresas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadosPuntos">
+            <EntityTypeMapping TypeName="ServicesDbModel.EmpleadosPuntos">
+              <MappingFragment StoreEntitySet="EmpleadosPuntos">
+                <ScalarProperty Name="Fecha_Modificacion" ColumnName="Fecha_Modificacion" />
+                <ScalarProperty Name="Login_Modificacion" ColumnName="Login_Modificacion" />
+                <ScalarProperty Name="Fecha_creacion" ColumnName="Fecha_creacion" />
+                <ScalarProperty Name="Login_Creacion" ColumnName="Login_Creacion" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Punto" ColumnName="Id_Punto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
